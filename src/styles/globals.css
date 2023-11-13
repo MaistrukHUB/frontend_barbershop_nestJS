@@ -32,7 +32,16 @@
   --secondary-bg: #232323;
   --block-bg: #3C3C3C;
 
+  /* --blue: #1900D5;
+  --lime: #C1EF00;
+  --orange: #fe5f1e;
+  --burgundy:#c80202;
+  --black: #000000;
+  --grey: #3C3C3C;
+  --light-grey: #7C7C7C; */
+
   ---border-color: #D1D1D1;
+  /* --border-radius: 12px; */
 }
 
 * {
@@ -45,6 +54,20 @@
 }
 
 body{
-  
+  margin: 0;
+  box-sizing: border-box;
+  background-color: var(--primary-bg);
+}
 
+.wrapper{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container{
+  background: var(--lime);
 }
