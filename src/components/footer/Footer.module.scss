@@ -1,8 +1,21 @@
 .root{
   height: 80px;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-   // @media (min-width: Xpx) {
-  //   }
+  justify-content: space-between;
+  padding: 0 50px ;
+  border-top: solid 2px var(--primary-text);
+  .logo{
+    font-size: 40px;
+    font-weight: 500;
+    color:var(--primary-text);
+  }
+  .phone{
+    font-weight: 500;
+    font-size: 18px;
+  }
+  .est{
+    font-size: 18px;
+  }
 }
