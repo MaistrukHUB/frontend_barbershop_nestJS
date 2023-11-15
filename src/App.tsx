@@ -9,15 +9,19 @@ function App() {
   return (
     <div className='App'>
       <div className='wrapper'>
-        <Layout>
-          <Routes>
-            <Route element={<PrivetRouser />}>
-              {/* роути на які можна зайти будучи залогіненим */}
-              <Route element={<PrivetAdmin />}>{/* роути на які можна зайти будучи адміном 'адмінка для додавання і редагування продуктів'*/}</Route>
-            </Route>
-            <Route path='/' element={<Home />} />
-          </Routes>
-        </Layout>
+        <div className='container'>
+          <Layout>
+            <Routes>
+              <Route element={<PrivetRouser />}>
+                {/* роути на які можна зайти будучи залогіненим */}
+                <Route element={<PrivetAdmin />}>
+                  {/* роути на які можна зайти будучи адміном 'адмінка для додавання і редагування продуктів'*/}
+                  </Route>
+              </Route>
+              <Route path='/' element={<Home />} />
+            </Routes>
+          </Layout>
+        </div>
       </div>
     </div>
   );

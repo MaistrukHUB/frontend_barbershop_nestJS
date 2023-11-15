@@ -1,0 +1,143 @@
+.root{
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  border-bottom:solid 1px var(--primary-text);
+  @media (max-width: 1200px) {
+    justify-content: center;
+  }
+
+  .headerIconsList{
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    @media (max-width: 1200px) {
+      position: absolute ;
+      right: 0;
+    }
+    :last-child{
+        margin-right: 0;
+      }
+      .headerIconListItem{
+        svg{
+            fill: var(--primary-text);
+        }
+        height: 22px;
+        width: 22px;
+        margin-right: 20px;
+      }
+  }
+
+
+  .burgerButton {
+    position: absolute;
+    left: 20px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    height: 26px;
+    margin: 30px auto;
+    z-index: 3;
+    display: none;
+      cursor: pointer;
+      @media (max-width: 1200px) {
+        display: block;
+      }
+  }
+
+  .burgerButton::before,
+  .burgerButton::after {
+    content: '';
+    left: 0;
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 4px;
+    border-radius: 10px;
+    background-color: var(--primary-text);
+    
+  }
+  
+  .burgerButton::before {
+    background-color: var(--primary-text);
+    top: 0;
+    box-shadow: 0 11px 0 var(--primary-text);
+    transition: box-shadow .3s .15s, top .3s .15s, transform .3s;
+  }
+  .burgerButton::after {
+    bottom: 0;
+    transition: bottom .3s .15s, transform .3s;
+  }
+  .burgerButton.visible::before {
+    background-color: var(--select-text);
+    top: 11px;
+    transform: rotate(45deg);
+    box-shadow: 0 6px 0 rgba(0,0,0,0);
+    transition: box-shadow .15s, top .3s, transform .3s .15s;
+  }
+  .burgerButton.visible::after {
+    background-color: var(--select-text);
+    bottom: 11px;
+    transform: rotate(-45deg);
+    transition: bottom .3s, transform .3s .15s;
+  }
+
+
+
+
+
+  .navList{
+    left: -500;
+  }
+  .navList{
+    margin: 0 200px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    transition:  0.5s ease;
+    .navListItem{
+      a{
+        color: var(--primary-text);
+      }
+    }
+        @media (max-width: 1500px) {
+        margin: 100px;
+      }
+        @media (max-width: 1400px) {
+        margin: 50px;
+      }
+      @media (max-width: 1200px) {
+        z-index: 2;
+        position: absolute;
+        margin: 0;
+        padding: 150px 0 0 50px;
+        left: -700px;
+        top: 0;
+        width: 500px;
+        height: 100vh;
+        background-color: var(--burger-bg);
+        flex-direction: column;
+        justify-content: start;
+        .navListItem{
+          margin-bottom: 30px;
+          a{
+            font-size: 36px;
+            color: var(--burger-text);
+          }
+        }
+      }
+  }
+  .navList.visible{
+    left: 0;
+  }
+ 
+  .hederLogo{
+    font-size: 40px;
+    font-weight: 500;
+    color:var(--primary-text);
+  }
+}
+
