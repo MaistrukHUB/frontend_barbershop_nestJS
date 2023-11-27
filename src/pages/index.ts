@@ -1,1 +1,9 @@
 export { default as Home } from "./home";
+export { default as AuthRootComponent } from "./auth";
+export { default as Shop } from "./shop";
+export { default as About } from "./about";
+export { default as Academy } from "./academy";
+export { default as HistoryOrder } from "./historyOrder";
+export { default as SelectedProduct } from "./selectedProduct";
+export { default as UpdateDatabase } from "./updateDatabase";
+export { default as Cart } from "./cart";

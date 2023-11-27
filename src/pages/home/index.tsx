@@ -1,9 +1,28 @@
-import React from 'react'
+import React from "react";
+import style from "./Home.module.scss";
+import { Map, Price, WelcomeBlock } from "../../components";
+import { fetchProducts } from "../../redux/slice/products";
+import { useAppDispatch } from "../../utils/hook";
+import ProductCart from "../../components/productCart";
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+  const dispatch = useAppDispatch();
 
-export default Home
+  React.useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
+  return (
+    <div className={`${style.root ? style.root : ""} container`}>
+      <WelcomeBlock />
+      <Price />
+      <Map />
+      <div className={style.price}></div>
+      <div className={style.swiper}></div>
+      <div className={style.swiper}></div>
+      <div className={style.map}></div>
+    </div>
+  );
+};
+
+export default Home;

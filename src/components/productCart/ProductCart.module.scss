@@ -1,0 +1,128 @@
+.productBlockWrapper {
+  padding:  0 10px 20px 10px;
+  z-index: 100;
+  width: 280px;
+  height: 100hv;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  background:var(--secondary-bg);
+  border: solid 1px var(--black);
+  border-radius: var(--border-radius);
+
+  @media (max-width: 1200px) {
+    justify-content: center;
+  }
+
+  @media (max-width: 600px) {
+    justify-content: start;
+  }
+}
+
+.productBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.productBlockImage {
+  width: 260px;
+  height: 260px;
+}
+
+.productBlockTitle {
+  color: var(--black);
+  text-align: center;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 1%;
+  margin-bottom: 20px;
+}
+
+.productBlockSelector {
+  width: 100%;
+    display: flex;
+    background-color: var(--secondary-bg-light);
+    border-radius: 10px;
+    border: solid 2px var(--black);
+    align-items: center;
+    padding: 6px;
+
+  ul {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 5px;
+      padding: 8px;
+        flex: 1;
+        max-width: 80px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 12px;
+
+      &:hover {
+        background-color: #eee; /* Add your desired hover background color */
+        border-radius: 10px;
+      }
+
+      &.active {
+        color: var(--white);
+        background: var(--black);
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+        border-radius: 5px;
+        cursor: auto;
+      }
+    }
+  }
+}
+
+.productBlockBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.productBlockPrice {
+  color: var(--primary-text);
+  font-weight: bold;
+}
+
+.button {
+  font-size: 18px;
+  color: var(--white);
+  cursor: pointer;;
+  background-color: var(--burgundy);
+  padding: 5px 10px;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+ 
+      svg {
+        color: var(--white);
+        width: 12px; /* Adjust width as needed */
+        height: 12px; /* Adjust height as needed */
+        margin-right: 5px; /* Adjust margin as needed */
+      }
+      span {
+        color: var(--white);
+        margin-right: 5px; /* Adjust margin as needed */
+      }
+      i {
+        font-style: italic;
+      }
+      &:active{
+        background-color: var(--burgundy-light);
+        
+      }
+      &:hover{
+      }
+  
+}

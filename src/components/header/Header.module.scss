@@ -1,20 +1,29 @@
 .root{
+  padding: 0 30px;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
   width: 100%;
-  height: 80px;
+  max-width: 1600px;
+
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 20px;
+  font-size: 18px;
   border-bottom:solid 1px var(--primary-text);
-  @media (max-width: 1200px) {
+  @media (max-width: 1350px) {
     justify-content: center;
+  }
+  @media (max-width: 600px) {
+    justify-content: start;
   }
 
   .headerIconsList{
     display: flex;
     align-items: center;
     margin-right: 15px;
-    @media (max-width: 1200px) {
+    @media (max-width: 1350px) {
       position: absolute ;
       right: 0;
     }
@@ -25,14 +34,15 @@
         svg{
             fill: var(--primary-text);
         }
-        height: 22px;
-        width: 22px;
+        height: 20px;
+        width: 20px;
         margin-right: 20px;
       }
   }
 
 
   .burgerButton {
+    
     position: absolute;
     left: 20px;
     cursor: pointer;
@@ -43,7 +53,7 @@
     z-index: 3;
     display: none;
       cursor: pointer;
-      @media (max-width: 1200px) {
+      @media (max-width: 1350px) {
         display: block;
       }
   }
@@ -65,66 +75,99 @@
     background-color: var(--primary-text);
     top: 0;
     box-shadow: 0 11px 0 var(--primary-text);
-    transition: box-shadow .3s .15s, top .3s .15s, transform .3s;
   }
   .burgerButton::after {
     bottom: 0;
-    transition: bottom .3s .15s, transform .3s;
+    transition: bottom .15s .15s, transform .15s;
   }
   .burgerButton.visible::before {
-    background-color: var(--select-text);
+    background-color: var(--white);
     top: 11px;
     transform: rotate(45deg);
     box-shadow: 0 6px 0 rgba(0,0,0,0);
-    transition: box-shadow .15s, top .3s, transform .3s .15s;
+    transition: box-shadow .15s, top .15s, transform .15s .15s;
   }
   .burgerButton.visible::after {
-    background-color: var(--select-text);
+    background-color: var(--white);
     bottom: 11px;
     transform: rotate(-45deg);
-    transition: bottom .3s, transform .3s .15s;
+    transition: bottom .15s, transform .15s .15s;
   }
 
-
-
-
+  .navList.visible{
+    overflow: hidden;
+  }
 
   .navList{
     left: -500;
-  }
-  .navList{
-    margin: 0 200px;
+    
+     margin: 0 20px;
     display: flex;
     width: 100%;
     justify-content: space-between;
     transition:  0.5s ease;
     .navListItem{
+      white-space: nowrap;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .authItems{
+        display: flex;
+        @media (max-width: 1350px) {
+          flex-direction: column;
+          align-items: center;
+        }
+        a{
+          
+          padding: 5px 10px;
+          border-bottom: solid 2px var(--white);
+          @media (max-width: 1350px) {
+            margin-bottom: 30px;
+          }
+          
+        }
+        :last-child{
+          margin: 0;
+        }
+        .itemBg{
+          background-color: var(--burgundy);
+          border: solid 2px var(--burgundy);
+
+        }
+        .itemBor{
+          color: var(--burgundy);
+          border: solid 2px var(--burgundy);
+        }
+      }
       a{
+        margin-left: 20px;
         color: var(--primary-text);
       }
     }
         @media (max-width: 1500px) {
-        margin: 100px;
+        // margin: 100px;
       }
         @media (max-width: 1400px) {
-        margin: 50px;
+        // margin: 50px;
       }
-      @media (max-width: 1200px) {
+      @media (max-width: 1350px) {
         z-index: 2;
         position: absolute;
         margin: 0;
-        padding: 150px 0 0 50px;
+
         left: -700px;
         top: 0;
-        width: 500px;
+        max-width: 500px;
         height: 100vh;
         background-color: var(--burger-bg);
         flex-direction: column;
-        justify-content: start;
+        justify-content: center;
         .navListItem{
-          margin-bottom: 30px;
+          margin-bottom: 35px;
           a{
-            font-size: 36px;
+          border-bottom: 1px solid var(--white);
+            font-size: 38px;
             color: var(--burger-text);
           }
         }
@@ -135,9 +178,63 @@
   }
  
   .hederLogo{
-    font-size: 40px;
+    font-size: 34px;
     font-weight: 500;
     color:var(--primary-text);
+    @media (max-width: 600px) {
+      font-size: 30px;
+      margin-left: 50px;
+    }
   }
+  
+}
+.phoneLink{
+  margin-left: 10px;
 }
 
+.logged{
+  color: var(--primary-text);
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  align-items: center;
+  @media (max-width: 1350px) {
+    font-size: 32px;
+    color: var(--white);
+  }
+  .helloUser{
+    margin-bottom: 5px;
+    font-size: 20px;
+    span{
+      cursor: pointer;
+      border-bottom: solid 2px var(--burgundy);
+      color: var(--burgundy);
+      font-size: 22px;
+      font-weight: 700;
+      @media (max-width: 1350px) {
+        font-size: 30px;
+      }
+    }
+    @media (max-width: 1350px) {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+  }
+  .logoutUser{
+    
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    svg{
+      height: 22px;
+      width: 22px;
+      fill:var(--primary-text);
+      cursor: pointer;
+      margin-left: 10px;
+      @media (max-width: 1350px) {
+       fill:var(--white);
+      }
+    }
+  }
+}

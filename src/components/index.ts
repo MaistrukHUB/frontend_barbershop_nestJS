@@ -1,4 +1,13 @@
-
 export { default as Header } from "./header";
 export { default as Footer } from "./footer";
-export { default as SwitcherTheme } from ".//switcherTheme";
+export { default as Price } from "./price";
+export { default as SwitcherTheme } from "./switcherTheme";
+export { default as WelcomeBlock } from "./welcomeBlock";
+export { default as Map } from "./map";
+export { default as ProductItemsContainer } from "./productItemsContainer";
+export { default as ProductCart } from "./productCart";
+export { default as Categories } from "./categories";
+export { default as Search } from "./search";
+export { default as UpDataPrice } from "./upDataComponents/upDataPrice";
+export { default as UpDataProduct } from "./upDataComponents/upDataProduct";
+export { default as UpDataTeams } from "./upDataComponents/upDataTeams";

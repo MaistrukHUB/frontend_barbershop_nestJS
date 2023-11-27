@@ -1,0 +1,22 @@
+.shopContainer {
+ 
+}
+.items{
+  padding-bottom: 30px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  // Three columns by default
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);  // Two columns when the screen width is 1200px or less
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;  // One column when the screen width is 600px or less
+  }
+
+  gap: 20px;  // Adjust the gap between items as needed
+
+
+// Additional styles for ProductItemsContainer or other elements if needed
+ }

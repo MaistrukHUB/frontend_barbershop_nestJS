@@ -1,0 +1,84 @@
+.root{
+  margin-top: 30px;
+    height: 500px;
+    background:  no-repeat url(https://cdn.shopify.com/s/files/1/0254/3075/3335/files/Artboard_1_643c133f-21bd-4477-9c52-ded500538463_4100x.jpg?v=1614303348);
+  background-attachment: fixed;
+  background-size: cover ;
+  background-position: top 0 left ;
+  padding: 50px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 150px;
+  @media (max-width: 415px){
+  
+    background-position: top 0 left -500px;
+    background-size: cover  ;
+    height: 600px;
+    padding-right: 0px;
+  }
+}
+  p{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: #000;
+    font-weight: 500;
+  }
+  span{
+    font-family: 'Montserrat', sans-serif;
+    color: #000;
+    font-size: 17px;
+    font-weight: 700;
+  }
+  
+  .mapInfo{
+    
+    font-family: 'Montserrat', sans-serif;
+    padding: 0 150px;
+    width: 100%;
+  margin-bottom: 50px;
+  height: 110px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--infoMap-bg);
+  @media (max-width: 900px){
+    padding: 0 50px;
+    }
+  @media (max-width: 580px){
+    padding: 0 ;
+    }
+  .phoneMap{
+        @media (max-width: 500px){
+        display: none;
+      }
+  }
+    .timeWork{ 
+      @media (max-width: 780px){
+        display: none;
+      }
+    }
+  }
+  
+  .mapItem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  img{
+    width: 25px;
+    height: auto;
+    margin-right: 20px;
+  }
+  
+  }
+  .map{
+  width: 80%;
+  height: 600px;
+  margin: 0 auto;
+  @media (max-width: 900px){
+  width: 80%;
+  }
+  }
+  
+  
