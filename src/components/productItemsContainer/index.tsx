@@ -1,15 +1,20 @@
 import React from "react";
 import style from "./ProductItemsContainer.module.scss";
 import {
-  ContentItemsProps,
+  IPropsProductsContainer,
   ProductItem,
+  ProductMode,
 } from "../../common/@types/product";
-import { ProductCart } from "../index";
+import { CreateNewProduct, ProductCard } from "../index";
+import { useAdmin, useAppSelector } from "../../utils/hook";
 
-const ProductItemsContainer: React.FC<ContentItemsProps> = ({
+const ProductItemsContainer: React.FC<IPropsProductsContainer> = ({
   products,
   status,
+  mode,
 }) => {
+  const admin = useAdmin();
+
   return (
     <div className={`${style.root} `}>
       {status === "error" ? (
@@ -17,13 +22,18 @@ const ProductItemsContainer: React.FC<ContentItemsProps> = ({
         <p>ErrorBlock</p>
       ) : (
         <div className={style.items}>
+          {mode === ProductMode.Edit && admin && <CreateNewProduct />}
           {status === "loading"
             ? [...new Array(9)].map((_, index) => (
                 // <MyLoader key={index} />
-                <p>myLoader</p>
+                <p key={index}>myLoader</p>
               ))
             : products.map((obj: ProductItem) => (
-                <ProductCart key={obj.name} itemObj={obj} />
+                <ProductCard
+                  admin={admin}
+                  key={obj.name}
+                  itemObj={obj}
+                />
               ))}
         </div>
       )}

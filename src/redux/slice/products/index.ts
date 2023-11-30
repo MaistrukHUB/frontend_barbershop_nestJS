@@ -16,16 +16,7 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
-// export type ProductItem = {
-//   name: string;
-//   rating: number | null;
-//   type: string;
-//   about: string;
-//   category: string;
-//   cost: number[];
-//   extent: number[];
-//   img: string[];
-// };
+
 
 enum Status {
   LOADING = "loading",

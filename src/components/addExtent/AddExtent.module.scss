@@ -1,0 +1,35 @@
+.itemBg{
+  display: none;
+  background-color: var(--burgundy);
+  border: solid 2px var(--burgundy);
+  max-width: 150px;
+  width: 100%;
+
+  margin-bottom: 20px;
+}
+.visible{
+  display: block;
+}
+.itemBor{
+  color: var(--burgundy);
+  border: solid 2px var(--burgundy);
+}
+
+.pricesBlock{
+  position: relative;
+  margin:  15px 0;
+  width: 100wh;
+  max-width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--black);
+  border: solid 1px var(--white);
+  border-radius: 12px;
+  padding: 15px 10px;
+}
+.deleteIcon{
+  fill: var(--white);
+  right: 10px;
+  top: 10px;
+}

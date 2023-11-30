@@ -15,6 +15,7 @@ export interface IPropsRegister {
 }
 
 export interface IAuthState {
+  token: string;
   user: IPublicUser;
   isLogged: boolean;
 }
@@ -50,5 +51,3 @@ interface IPublicUser {
   updateAt: string;
   cart: [ICart];
 }
-
-

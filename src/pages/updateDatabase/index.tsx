@@ -11,7 +11,7 @@ import style from "./UpdateDatabase.module.scss";
 
 const UpdateDatabase: React.FC = () => {
   const [selectCategoryProperty, setSelectCategoryProperty] =
-    useState<string>("products");
+    useState<string>("price");
 
   return (
     <div className={`${style.root} content`}>
@@ -19,10 +19,10 @@ const UpdateDatabase: React.FC = () => {
         categories={categoriesPropertyByUpdate}
         setSelectCategoryProperty={setSelectCategoryProperty}
       />
-      {selectCategoryProperty === "products" ? (
-        <UpDataProduct />
-      ) : selectCategoryProperty === "price" ? (
+      {selectCategoryProperty === "price" ? (
         <UpDataPrice />
+      ) : selectCategoryProperty === "products" ? (
+        <UpDataProduct />
       ) : (
         <UpDataTeams />
       )}

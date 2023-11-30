@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { IAuthState } from "../../../common/@types/auth";
 
 const initialState: IAuthState = {
+  token: "",
   user: {
     id: null,
     name: "",
@@ -43,6 +44,7 @@ export const authSlice = createSlice({
     login(state, action) {
       state.user = action.payload.user;
       state.isLogged = true;
+      state.token = action.payload.token;
     },
     logout(state) {
       state.user = initialState.user;

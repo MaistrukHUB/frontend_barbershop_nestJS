@@ -32,7 +32,7 @@ const Header: React.FC = () => {
     transition: "background-color 0.3s ease-in-out",
   };
 
-  const { isLogged, user } = useAppSelector(
+  const { isLogged, user, token } = useAppSelector(
     (state) => state.authSlice
   );
   const dispatch = useAppDispatch();

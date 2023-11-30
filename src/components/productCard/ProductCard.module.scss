@@ -1,7 +1,8 @@
 .productBlockWrapper {
+  position: relative;
   padding:  0 10px 20px 10px;
-  z-index: 100;
   width: 280px;
+  min-height: 450px;
   height: 100hv;
   display: flex;
   align-items: center;
@@ -27,8 +28,10 @@
 }
 
 .productBlockImage {
-  width: 260px;
-  height: 260px;
+  min-width: 260px;
+  width: 100wh;
+  min-height: 260px;
+  height: 100hv;
 }
 
 .productBlockTitle {
@@ -125,4 +128,10 @@
       &:hover{
       }
   
+}
+.deleteIcon{
+  fill: var(--primary-text);
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }

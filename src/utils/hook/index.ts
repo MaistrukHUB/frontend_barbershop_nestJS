@@ -19,3 +19,13 @@ export const useAdmin = () => {
   const { user } = useAppSelector((state) => state.authSlice);
   return user.role;
 };
+
+export const useAxiosConfig = () => {
+  const { token } = useAppSelector((state) => state.authSlice);
+  return {
+    headers: {
+      Authorization: `Bearer ${token}`, // Замініть yourAuthToken на реальний токен
+      "Content-Type": "application/json", // Якщо тип вмісту JSON
+    },
+  };
+};

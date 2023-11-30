@@ -6,10 +6,21 @@ export type ProductItem = {
   category: string;
   cost: number[];
   extent: number[];
-  img: string[];
+  img: string;
 };
 
 export type ContentItemsProps = {
   products: ProductItem[];
   status: string;
 };
+
+export enum ProductMode {
+  OnlyShow = "onlyShow",
+  Edit = "edit",
+}
+
+export interface IPropsProductsContainer {
+  mode: ProductMode;
+  products: ProductItem[];
+  status: string;
+}

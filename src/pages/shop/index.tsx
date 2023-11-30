@@ -7,6 +7,7 @@ import {
 } from "../../components";
 import { useAppSelector } from "../../utils/hook";
 import { categoriesProduct } from "../../common/consts/categories";
+import { ProductMode } from "../../common/@types/product";
 
 const test = [
   {
@@ -78,9 +79,9 @@ const test = [
 const status = "success";
 
 const Shop = () => {
-  // const { products, status } = useAppSelector(
-  //   (state) => state.productsSlice
-  // );
+  const { products, status } = useAppSelector(
+    (state) => state.productsSlice
+  );
 
   const [selectCategoryProperty, setSelectCategoryProperty] =
     useState<string>("");
@@ -93,7 +94,12 @@ const Shop = () => {
         />
         <Search />
       </div>
-      <ProductItemsContainer products={test} status={status} />
+      <ProductItemsContainer
+        products={products}
+        status={status}
+        // mode={ProductMode.Edit}
+        mode={ProductMode.OnlyShow}
+      />
     </div>
   );
 };
