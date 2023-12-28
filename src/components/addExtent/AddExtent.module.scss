@@ -1,7 +1,7 @@
 .itemBg{
   display: none;
-  background-color: var(--burgundy);
-  border: solid 2px var(--burgundy);
+  background-color: var(--header-bg);
+  border: solid 2px var(--header-bg);
   max-width: 150px;
   width: 100%;
 
@@ -11,15 +11,16 @@
   display: block;
 }
 .itemBor{
-  color: var(--burgundy);
-  border: solid 2px var(--burgundy);
+  color: var(--header-bg);
+  border: solid 2px var(--header-bg);
 }
 
 .pricesBlock{
+  white-space: nowrap;
   position: relative;
   margin:  15px 0;
-  width: 100wh;
-  max-width: 300px;
+
+  max-width: 400px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,9 +28,29 @@
   border: solid 1px var(--white);
   border-radius: 12px;
   padding: 15px 10px;
+  @media (max-width: 650px) {
+    align-items: start;
+    flex-direction: column;
+    height: 90px;
+    padding-left: 10px;
+  }
+}
+.settingIcon{
+  cursor: pointer;
+  fill: var(--white);
+  position: absolute;
+  right: 40px;
+  top: 11px;
 }
 .deleteIcon{
+  position: absolute;
   fill: var(--white);
   right: 10px;
   top: 10px;
+}
+span{
+  margin-right: 40px;
+  margin-left: 20px;
+  white-space: nowrap;
+  color: var(--white);
 }

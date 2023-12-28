@@ -5,6 +5,10 @@
 	margin-left: 20px;
       margin-top: 10px;
     }
+	@media (max-width:1300px) {
+	    margin-left: 0px;
+      margin-top: 10px;
+    }
  }
  
  .input {
@@ -14,6 +18,9 @@
 	width: 230px;
 	border-radius: 10px;
 	font-size: 16px;
+	@media (max-width:600px) {
+  
+  }
  
 	&:focus {
 	  border: 1px solid rgba(0, 0, 0, 0.2);

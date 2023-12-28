@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+// registration.tsx
+import React from "react";
 import style from "./Registration.module.scss";
 import { IPropsRegister } from "../../../common/@types/auth";
+import { WarningModal } from "../../../components";
 
 const Registration: React.FC<IPropsRegister> = ({
   setEmail,
@@ -8,9 +10,16 @@ const Registration: React.FC<IPropsRegister> = ({
   setPhone,
   setPassword,
   setRepeatPassword,
-  navigate,
+  serverError,
   handelSubmit,
+  validationErrors, // Add validationErrors prop
 }): JSX.Element => {
+  const nameError = validationErrors?.name;
+  const phoneError = validationErrors?.phone;
+  const emailError = validationErrors?.email;
+  const passwordError = validationErrors?.password;
+  const repeatPasswordError = validationErrors?.repeatPassword;
+
   return (
     <div
       className={`${style.registrationContainer} ${style.content}`}
@@ -29,9 +38,10 @@ const Registration: React.FC<IPropsRegister> = ({
           onChange={(e) => setName(e.target.value)}
           className={style.input}
         />
+        {nameError && <div className={style.error}>{nameError}</div>}
 
         <label htmlFor='phone' className={style.label}>
-          Телефон:
+          Телефон: (+38098*******)
         </label>
         <input
           type='number'
@@ -39,6 +49,9 @@ const Registration: React.FC<IPropsRegister> = ({
           onChange={(e) => setPhone(parseInt(e.target.value, 10))}
           className={style.input}
         />
+        {phoneError && (
+          <div className={style.error}>{phoneError}</div>
+        )}
 
         <label htmlFor='email' className={style.label}>
           Електронна пошта:
@@ -49,6 +62,9 @@ const Registration: React.FC<IPropsRegister> = ({
           onChange={(e) => setEmail(e.target.value)}
           className={style.input}
         />
+        {emailError && (
+          <div className={style.error}>{emailError}</div>
+        )}
 
         <label htmlFor='password' className={style.label}>
           Пароль:
@@ -59,16 +75,23 @@ const Registration: React.FC<IPropsRegister> = ({
           onChange={(e) => setPassword(e.target.value)}
           className={style.input}
         />
+        {passwordError && (
+          <div className={style.error}>{passwordError}</div>
+        )}
 
         <label htmlFor='repeatPassword' className={style.label}>
-          Пароль:
+          Повторіть пароль:
         </label>
         <input
-          type='repeatPassword'
+          type='password'
           id='repeatPassword'
           onChange={(e) => setRepeatPassword(e.target.value)}
           className={style.input}
         />
+        {repeatPasswordError && (
+          <div className={style.error}>{repeatPasswordError}</div>
+        )}
+        <WarningModal serverError={serverError} />
 
         <button type='submit' className={style.button}>
           Зареєструватися

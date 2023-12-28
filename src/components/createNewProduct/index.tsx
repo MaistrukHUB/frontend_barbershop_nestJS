@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import style from "./CreateNewProduct.module.scss";
 import Modal from "react-modal";
 import axios from "axios";
-import * as Yup from "yup";
+import * as yup from "yup";
+import qs from "qs";
+
 import AddExtent from "../addExtent";
 import {
   useAppDispatch,
@@ -10,6 +12,18 @@ import {
   useAxiosConfig,
 } from "../../utils/hook";
 import { fetchProducts } from "../../redux/slice/products";
+import WarningModal from "../warningModal";
+import {
+  Theme,
+  toast,
+  ToastContainer,
+  ToastOptions,
+} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { configToast } from "../../utils/configuration";
+import { selectFilters, setFilters } from "../../redux/slice/filters";
+import { useNavigate } from "react-router-dom";
+import { categoriesProduct } from "../../common/consts/categories";
 
 interface CardProps {
   // Інші властивості картки можна додати тут
@@ -20,6 +34,7 @@ enum ProductType {
   beard = "beard",
   shave = "shave",
   certificate = "certificate",
+  toothpaste = "toothpaste",
 }
 
 interface FormErrors {
@@ -34,12 +49,86 @@ interface FormErrors {
 }
 
 const CreateNewProduct: React.FC<CardProps> = () => {
-  const dispatch = useAppDispatch();
-
-  const { token } = useAppSelector((state) => state.authSlice);
   const axiosConfig = useAxiosConfig();
 
+  const { selectedCategory, searchValue } =
+    useAppSelector(selectFilters);
+
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const isParams = React.useRef<boolean>(false);
+  const isMounted = React.useRef<boolean>(false);
+
+  // якщо був перший ренднр перевіряємо URL-параметри і зберігаємо їх
+  React.useEffect(() => {
+    if (window.location.search) {
+      const parseNavigate = qs.parse(
+        window.location.search.substring(1)
+      );
+      const params = {
+        selectedCategory:
+          categoriesProduct.find(
+            (obj) =>
+              obj.categoryProperty === parseNavigate.categoryProperty
+          ) || selectedCategory,
+        searchValue: parseNavigate.searchValue
+          ? parseNavigate.searchValue.toString()
+          : "",
+      };
+      if (
+        searchValue !== undefined &&
+        selectedCategory !== undefined
+      ) {
+        dispatch(
+          setFilters({
+            ...params,
+          })
+        );
+      }
+      isParams.current = true;
+    }
+  }, []);
+  //Функція яка робить запит до беку та витягує продукти
+  const getProducts = async () => {
+    dispatch(
+      fetchProducts({
+        selectedCategory,
+        searchValue,
+      })
+    );
+  };
+
+  // відповідає за те щоб при першому рендері не вшивати в силку парамерти-URL
+  React.useEffect(() => {
+    if (isMounted.current) {
+      const queryString = qs.stringify({
+        categoryProperty:
+          selectedCategory && selectedCategory.categoryProperty
+            ? selectedCategory.categoryProperty
+            : "",
+        searchValue,
+      });
+      navigate(`?${queryString}`);
+    }
+    isMounted.current = true;
+  }, [selectedCategory, searchValue]);
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+    if (!isParams.current) {
+      getProducts();
+    }
+    isParams.current = false;
+  }, [selectedCategory, searchValue]);
+
   const [errors, setErrors] = useState<FormErrors>({});
+  const [serverError, setServerError] = useState<string[] | null>(
+    null
+  );
+
+  const [validationErrors, setValidationErrors] =
+    useState<FormErrors>({});
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -68,6 +157,9 @@ const CreateNewProduct: React.FC<CardProps> = () => {
       extent: [],
       img: "",
     });
+    setErrors({});
+    setValidationErrors({});
+    setServerError(null);
   };
 
   const handleChange = (
@@ -82,45 +174,69 @@ const CreateNewProduct: React.FC<CardProps> = () => {
     }));
   };
 
-  const productSchema = Yup.object().shape({
-    name: Yup.string().required("Поле Ім'я є обов'язковим"),
-    rating: Yup.number()
-      .required("Поле Рейтинг є обов'язковим")
-      .min(1, "Рейтинг повинен бути більше 0"),
-    type: Yup.string()
-      .oneOf(
-        Object.values(ProductType),
-        "Оберіть дійсний тип продукту"
-      )
-      .required("Поле Тип є обов'язковим"),
-    about: Yup.string().required("Поле Про продукт є обов'язковим"),
-    cost: Yup.array()
-      .of(Yup.number())
-      .required("Поле Cost є обов'язковим")
-      .min(1, "Масив Cost повинен містити хоча б один елемент")
-      .test(
-        "nonZero",
-        "Елементи масиву Cost не повинні дорівнювати 0",
-        (value) => value.every((element) => element !== 0)
-      ),
-    img: Yup.string().required("Поле Img є обов'язковим"),
-  });
-
-  const handleSubmit = async () => {
+  const handleValidation = async () => {
     try {
+      const productSchema = yup.object().shape({
+        name: yup.string().required("Поле Ім'я є обов'язковим"),
+        rating: yup
+          .number()
+          .required("Поле Рейтинг є обов'язковим")
+          .min(1, "Рейтинг повинен бути більше 0"),
+        type: yup
+          .string()
+          .oneOf(
+            Object.values(ProductType),
+            "Оберіть дійсний тип продукту"
+          )
+          .required("Поле Тип є обов'язковим"),
+        about: yup
+          .string()
+          .required("Поле (про продукт) є обов'язковим"),
+        cost: yup
+          .array()
+          .of(yup.number())
+          .required("Поле ціна є обов'язковим")
+          .min(1, "Масив ціна повинен містити хоча б один елемент")
+          .test(
+            "nonZero",
+            "Елементи масиву ціна не повинні дорівнювати 0",
+            (value) => value.every((element) => element !== 0)
+          ),
+        img: yup.string().required("Поле Img є обов'язковим"),
+      });
+
       await productSchema.validate(formData, { abortEarly: false });
-      // Валідація довжини полів cost та extent
       if (formData.cost.length !== formData.extent.length) {
         throw new Error(
           "Довжини полів cost та extent не співпадають"
         );
       }
-      console.log(formData);
+    } catch (error) {
+      if (error instanceof yup.ValidationError) {
+        const validationErrors: FormErrors = {};
+        error.inner.forEach((err) => {
+          if (err.path) {
+            validationErrors[err.path] = err.message;
+          }
+        });
+        setValidationErrors(validationErrors);
+      } else {
+        console.error("Помилка при відправці запиту:", error);
+        setServerError(["Сталася невідома помилка"]);
+      }
+    }
+  };
+
+  const handleSubmit = async () => {
+    try {
+      await handleValidation();
+
       const response = await axios.post(
         "http://localhost:6969/products/create",
         formData,
         axiosConfig
       );
+      toast.success("Продукт додано!", { ...configToast });
       const resetFormData = {
         name: "",
         rating: 0,
@@ -130,32 +246,44 @@ const CreateNewProduct: React.FC<CardProps> = () => {
         extent: [],
         img: "",
       };
+
       setFormData({ ...resetFormData });
-      dispatch(fetchProducts());
+      dispatch(
+        fetchProducts({
+          selectedCategory,
+          searchValue,
+        })
+      );
       closeModal();
-    } catch (error) {
-      if (error instanceof Yup.ValidationError) {
-        const validationErrors: FormErrors = {};
-        error.inner.forEach((err) => {
-          if (err.path) {
-            validationErrors[err.path] = err.message;
-          }
+    } catch (error: any) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        toast.info(`${error.response.data.message}`, {
+          ...configToast,
+          autoClose: 3000,
         });
-        setErrors(validationErrors);
+        console.log(error.response.data.message);
+        setServerError([error.response.data.message]);
       } else {
-        console.error("Помилка при відправці запиту:");
+        toast.info(`Сталася невідома помилка.`, {
+          ...configToast,
+          autoClose: 3000,
+        });
+
+        setServerError(["Сталася невідома помилка."]);
       }
     }
   };
 
   return (
     <div className={style.card}>
-      {/* Інші елементи картки */}
       <div className={style.circle} onClick={openModal}>
         <div className={style.plus}>+</div>
       </div>
       <div className={style.circleText}>Додати новий продукт</div>
-      {/* Модальне вікно */}
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
@@ -172,9 +300,12 @@ const CreateNewProduct: React.FC<CardProps> = () => {
               value={formData.name}
               onChange={handleChange}
             />
-            {errors.name && <p className={style.worningText}>{errors.name}</p>}
+            {validationErrors.name && (
+              <div className={style.warningText}>
+                {validationErrors.name}
+              </div>
+            )}
           </label>
-
           <label>
             Рейтинг:
             <input
@@ -183,9 +314,12 @@ const CreateNewProduct: React.FC<CardProps> = () => {
               value={formData.rating}
               onChange={handleChange}
             />
-            {errors.rating && <p className={style.worningText}>{errors.rating}</p>}
+            {validationErrors.rating && (
+              <div className={style.warningText}>
+                {validationErrors.rating}
+              </div>
+            )}
           </label>
-
           <label>
             Тип:
             <select
@@ -202,7 +336,11 @@ const CreateNewProduct: React.FC<CardProps> = () => {
                 </option>
               ))}
             </select>
-            {errors.type && <p className={style.worningText}>{errors.type}</p>}
+            {validationErrors.type && (
+              <div className={style.warningText}>
+                {validationErrors.type}
+              </div>
+            )}
           </label>
           <label>
             Зображення (Img):
@@ -212,7 +350,11 @@ const CreateNewProduct: React.FC<CardProps> = () => {
               value={formData.img}
               onChange={handleChange}
             />
-            {errors.img && <p className={style.worningText}>{errors.img}</p>}
+            {validationErrors.img && (
+              <div className={style.warningText}>
+                {validationErrors.img}
+              </div>
+            )}
           </label>
           <label>
             Про продукт:
@@ -221,7 +363,11 @@ const CreateNewProduct: React.FC<CardProps> = () => {
               value={formData.about}
               onChange={handleChange}
             />
-            {errors.about && <p className={style.worningText}>{errors.about}</p>}
+            {validationErrors.about && (
+              <div className={style.warningText}>
+                {validationErrors.about}
+              </div>
+            )}
           </label>
           <div className={style.extentBlock}>
             <AddExtent
@@ -229,6 +375,8 @@ const CreateNewProduct: React.FC<CardProps> = () => {
               formData={formData}
             />
           </div>
+          <WarningModal serverError={serverError} />
+
           <div className={style.buttons}>
             <button
               className={style.itemBg}

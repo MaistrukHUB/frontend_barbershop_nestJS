@@ -1,0 +1,61 @@
+.headerIconsList{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  border: none;
+  
+  @media (max-width: 1350px) {
+    position: absolute ;
+    top: 0;
+    right: 0;
+  }
+  :last-child{
+      margin-right: 0;
+    }
+    .headerIconListItem{
+      display: flex;
+      flex-direction: row;
+      height: 20px;
+      a{
+        border: none;
+        color: var(--primary-text);
+        svg{
+          margin-bottom: none;
+          height: 20px;
+          width: 20px;
+            fill: var(--primary-text);
+            @media (max-width: 1350px) {
+            fill: var(--white);
+            }
+        }
+        }
+      height: 20px;
+      width: 20px;
+      margin-right: 20px;
+    }
+    a{
+      display: flex;
+      
+    }
+    .cartIcon{
+     
+
+      position: relative;
+    }
+    .iconCartCount{
+      position: absolute;
+    top: -8px;
+    right: -10px;
+
+    color: var(--primary-text);
+    }
+    .iconCartCount.white{
+      font-size: 13px;
+      position: absolute;
+      
+      color: var(--white);
+      }
+}
+

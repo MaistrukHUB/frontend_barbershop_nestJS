@@ -1,0 +1,83 @@
+.root{
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  margin: 0px 50px;
+  margin-bottom: 30px;
+  max-height: 560px;
+  .settingButtons{
+    display: flex;
+    justify-content: end;
+    :last-child{
+      margin-right: 0;
+    }
+  }
+  .settingButton{
+    margin-right: 10px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+  }
+  .cardBody{
+    .imgTeammateContainer{
+      width: 300px;
+      height: 375px;
+      overflow: hidden;
+      .imgTeammate{
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+      }
+    }
+    .infoTeammate{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .experienceTeammate , .gradationTeammate, .nameTeammate{
+        color: var(--primary-text);
+      }
+      .gradationTeammate{
+        margin-top: 10px ;
+      }
+      .nameTeammate{
+        margin-top: 10px ;
+        font-weight: 300;
+        font-size: 32px;
+      }
+      .experienceTeammate{
+        margin-top: 15px ;
+        .experienceTeammateData{
+          font-weight: 500;
+          margin: 0 10px;
+        }
+      }
+    }
+    
+    .LinksTeammate{
+      width: 100%;
+      margin: 0 auto;
+      margin-top: 15px ;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .linkReviewsTeammate{
+        display: flex;
+        width: max-content;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 15px;
+        border: solid 2px var(--header-bg);
+        background-color: var(--header-bg);
+      }
+      .linkAppointmentTeammate{
+        display: flex;
+        width: max-content;
+        align-items: center;
+        border: solid 2px var(--header-bg);
+        justify-content: center;
+        padding: 10px 15px;
+      }
+    }
+   
+  }
+}

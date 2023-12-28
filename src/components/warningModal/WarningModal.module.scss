@@ -1,0 +1,25 @@
+.root{
+  margin: 20px 0px;
+  max-width: 300px;
+  border: solid 1px var(--black);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 25px;
+  background:var(--secondary-bg);
+  .warningMessage{
+    .warningMessageItem{
+      margin-bottom: 15px;
+    }
+    :last-child{
+      margin-bottom: 0;
+    }
+  }
+  
+  p{
+    line-height: 20px;
+    word-wrap: break-word;
+  font-size: 16px;
+  }
+}

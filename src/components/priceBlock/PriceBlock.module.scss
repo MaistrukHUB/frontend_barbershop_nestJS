@@ -1,0 +1,48 @@
+.price{
+  position: relative;
+  min-width: 290px;
+  width: 100%;
+  margin: 25px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  p{
+    font-size: 22px;
+    color:var(--primary-text);
+  }
+  span{
+    margin: 0 5px;
+    font-size: 22px;
+    font-weight: 600;
+    color:var(--primary-text);
+  }
+  .priceIsRange{
+    font-weight: 400;
+    color:var(--primary-text);
+  }
+  .deleteIcon{
+  cursor: pointer;
+  fill: var(--primary-text);
+  position: absolute;
+  right: -26px;
+  top: 0;
+}
+
+.settingIcon{
+  cursor: pointer;
+  fill: var(--primary-text);
+  position: absolute;
+  right: -60px;
+  top: 0;
+
+}
+.priceBlockCost{
+  display: flex;
+  align-items: center;
+}
+
+}
+.priceText{
+  margin-right:20px
+}

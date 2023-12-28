@@ -1,17 +1,19 @@
 .confirmModal {
+  color: var(--white);
   position: fixed;
   z-index:10000000000000000;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
-  background: #d9d9d9;
-  width: 900px;
-  height: 500px;
+  background-color: var(--admin-modal-bg);
+  width: 500px;
+  height: 260px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  border: solid 2px var(--color-orange);
+  border: solid 2px var(--primary-text);
   border-radius: 15px;
   @media (max-width: 1000px) {
     width: 700px;
@@ -33,15 +35,27 @@
   width: 400px;
   display: flex;
   justify-content: space-between;
+  button{
+    margin-right: 30px;
+    border: solid 2px var(--header-bg);
+  }
+  .deny{
+  }
+  .confirm{
+    background:var(--header-bg);
+    
+  }
+  :last-child{
+    margin-right: 0;
+  }
   @media (max-width: 635px) {
-    height: 150px;
+    height: 100px;
     width: 200px;
     flex-direction: column;
   }
 }
-.img {
-  width: 270px;
-  height: 300px;
+svg {
+  fill: var(--white);
   margin-bottom: 20px;
 }
 .title {

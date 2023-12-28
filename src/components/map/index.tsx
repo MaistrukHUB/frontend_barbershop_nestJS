@@ -8,7 +8,7 @@ const Map = () => {
         <div className={`${style.mapLocation} ${style.mapItem}`}>
           <img
             alt=''
-            src='//www.gstatic.com/images/icons/material/system_gm/2x/place_gm_blue_24dp.png'
+            src='https://www.pngkey.com/png/full/235-2350342_location-white-location-icon-with-transparent-background.png'
             // jsan='7.Liguzb,0.alt,8.src'
           />
           <p>
@@ -18,7 +18,7 @@ const Map = () => {
         <div className={`${style.timeWork} ${style.mapItem}`}>
           <img
             aria-label='Години'
-            src='//www.gstatic.com/images/icons/material/system_gm/2x/schedule_gm_blue_24dp.png'
+            src='https://www.potawatomizoo.org/wp-content/uploads/2018/02/calendar-clock-icon-white.png'
             // jsan='7.OdW2qd,8.src,0.aria-label'
           />
           <p>
@@ -28,7 +28,7 @@ const Map = () => {
         <div className={`${style.phoneMap} ${style.mapItem}`}>
           <img
             alt=''
-            src='//www.gstatic.com/images/icons/material/system_gm/2x/phone_gm_blue_24dp.png'
+            src='https://www.pngkey.com/png/full/524-5247336_call-us-1-877-582-transparent-background-phone.png'
             // jsan='7.Liguzb,0.alt,8.src'
           />
           <p>0630673222 </p>

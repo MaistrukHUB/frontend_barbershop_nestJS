@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+// login.tsx
+import React from "react";
 import style from "./Login.module.scss";
 import { IPropsLogin } from "../../../common/@types/auth";
+import { WarningModal } from "../../../components";
 
 const Login: React.FC<IPropsLogin> = ({
   setEmail,
   setPassword,
-  navigate,
+  serverError,
   handelSubmit,
+  validationErrors, // Add validationErrors prop
 }): JSX.Element => {
+  const emailError = validationErrors?.email;
+  const passwordError = validationErrors?.password;
+
   return (
     <div className={`${style.loginContainer} ${style.content}`}>
       <h2>Увійдіть до свого акаунту</h2>
@@ -21,6 +27,9 @@ const Login: React.FC<IPropsLogin> = ({
           onChange={(e) => setEmail(e.target.value)}
           className={style.input}
         />
+        {emailError && (
+          <div className={style.error}>{emailError}</div>
+        )}
 
         <label htmlFor='password' className={style.label}>
           Пароль:
@@ -31,7 +40,12 @@ const Login: React.FC<IPropsLogin> = ({
           onChange={(e) => setPassword(e.target.value)}
           className={style.input}
         />
-
+        {passwordError && (
+          <div className={style.error}>
+            {passwordError}
+          </div>
+        )}
+        <WarningModal  serverError={serverError} />
         <button type='submit' className={style.button}>
           Увійти
         </button>

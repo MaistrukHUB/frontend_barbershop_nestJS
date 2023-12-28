@@ -1,23 +1,38 @@
 import React, { useState } from "react";
 import style from "./Categories.module.scss";
 import { Category } from "../../common/@types/categories";
+import { useAppDispatch, useAppSelector } from "../../utils/hook";
+import {
+  selectFiltersCategory,
+  setCategory,
+} from "../../redux/slice/filters";
+
+export enum EnumCategory {
+  categoryProduct = "categoryProduct",
+  anyCategory = "anyCategory",
+}
 
 interface ICategoryProperty {
   categories: Category[];
-  setSelectCategoryProperty: (property: string) => void;
+  mode: EnumCategory;
 }
 
 const Categories: React.FC<ICategoryProperty> = ({
   categories,
-  setSelectCategoryProperty,
+  mode,
 }) => {
-  const [category, setCategory] = useState<Category>(categories[0]);
+  const dispatch = useAppDispatch();
+  const category = useAppSelector(selectFiltersCategory);
 
   const onClickCategory = (item: Category) => {
-    setCategory(item);
-    setSelectCategoryProperty(item.categoryProperty);
+    if (mode === EnumCategory.categoryProduct) {
+      dispatch(setCategory(item));
+    }
+    if (mode === EnumCategory.anyCategory) {
+      setAnyCategory(item);
+    }
   };
-
+  const [anyCategory, setAnyCategory] = useState(categories[0]);
   return (
     <div className={style.root}>
       <ul>
@@ -26,9 +41,11 @@ const Categories: React.FC<ICategoryProperty> = ({
             <li
               onClick={() => onClickCategory(item)}
               key={item.categoryProperty}
-              className={
-                category?.name === item.name ? style.active : ""
-              }
+              className={`
+                ${category?.name === item.name ? style.active : ""}
+                ${
+                  mode === EnumCategory.anyCategory && anyCategory?.name === item.name ? style.active : ""
+                }`}
             >
               {item.name}
             </li>

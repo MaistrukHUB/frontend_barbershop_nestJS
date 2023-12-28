@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&family=Poppins:wght@200&family=Roboto:wght@400;500;700;900&display=swap');
 
 :root{
   --theme-icon:url('https://i.ibb.co/7JfqXxB/sunny.png');
@@ -10,10 +10,12 @@
 
 
   --primary-bg: #ffffff;
+  --header-bg: #546a44f7;
+  --header-bg-dark: #415235f7;
   --secondary-bg: #E5E5E5;
   --block-bg: #ffffff;
   --burger-bg: rgba(0, 0, 0, 0.946);
-  --infoMap-bg: rgba(197, 197, 197, 0.767);
+  --infoMap-bg:  #546a44e2;
   --admin-modal-bg: #2d2d2d;
 
   --white: #ffffff;
@@ -41,7 +43,7 @@
   --secondary-bg: #2d2d2d;
   --secondary-bg-light: #656565;
   --block-bg: #3C3C3C;
-  --infoMap-bg: rgba(0, 0, 0, 0.767);
+  --infoMap-bg: rgba(60, 97, 62, 0.767);
 
   ---border-color: #D1D1D1;
 }
@@ -51,7 +53,7 @@
   margin: 0;
   list-style: none;
   outline: none;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
   text-decoration: none;
 }
@@ -102,7 +104,9 @@ body{
 .outside-content-block{
   margin: 0 -160px;
 }
-
+.Toastify__close-button.Toastify__close-button--dark{
+ width: 30px;
+}
 
 
 // button {

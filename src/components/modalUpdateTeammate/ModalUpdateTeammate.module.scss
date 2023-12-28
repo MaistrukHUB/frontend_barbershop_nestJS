@@ -1,0 +1,73 @@
+.root{
+  span{
+    color:var(--white)
+    
+  }
+  button{
+cursor: pointer;
+  }
+}
+
+.title{
+  max-width: 500px;
+  width: 100wh;
+  font-size: 30px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  // margin-top: 200px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--white);
+  padding: 20px;
+background-color: var(--admin-modal-bg);
+
+width: 60%;
+height: 100hv;
+@media (max-width:700px) {
+ top: calc(50% - (-100px));
+}
+
+
+
+}
+.itemBg{
+  background-color: var(--header-bg);
+  border: solid 2px var(--header-bg);
+
+}
+.itemBor{
+  color: var(--header-bg);
+  border: solid 2px var(--header-bg);
+}
+
+.overlay {
+  z-index:1000000;
+  overflow: hidden;
+  overflow-y: auto; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+form {
+  /* Стилі для форми */
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+ 
+}
+
+
+ 

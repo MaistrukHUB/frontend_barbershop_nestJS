@@ -1,0 +1,44 @@
+.root{
+  color: var(--white);
+  font-weight: 300;
+  font-size: 44px;
+  width:100%;
+  display: flex;
+  @media (max-width: 1000px){
+    flex-direction: column;
+}
+  .imgAcademyBlock , .imgAboutBloc{
+    width: 50%;
+    height: 800px;
+    @media (max-width: 1000px){
+      width: 100%;
+  }
+  }
+  .imgAcademyBlock{
+    background: url('https://menspire.co.uk/cdn/shop/products/image_81bbb6a6-e247-419a-941a-6faff46cc489_1296x.png?v=1603747037');
+     background-size: cover  ;
+        background-position: bottom 50%  left 50% ;
+  }
+  .blockShadow{
+    text-align: center;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.656);
+  }
+  .imgAboutBloc{
+    background-size: cover  ;
+        background-position: bottom 50%  left 50% ;
+    background: url('https://scontent.cdninstagram.com/v/t39.30808-6/387862141_18392190508013016_409284767241531241_n.jpg?stp=dst-jpg_e15&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDE0NDAuc2RyIn0&_nc_ht=scontent.cdninstagram.com&_nc_cat=100&_nc_ohc=PezsxYRc87oAX-xLvjc&edm=APs17CUAAAAA&ccb=7-5&ig_cache_key=MzIxMzQxOTkzMDA4OTM5NDIzNQ%3D%3D.2-ccb7-5&oh=00_AfCi7-B7GWSF96wKmtxB_QHA0bSGAQ-2JsaOtBDBctx_DQ&oe=65829A96&_nc_sid=10d13b');
+  }
+  a {
+    text-decoration: none;
+    border-bottom: 2px solid transparent; 
+    transition: border-bottom 0.5s; 
+    &:hover {
+      border-bottom: 2px solid #ffffff;
+    }
+  }
+}

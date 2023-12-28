@@ -8,6 +8,7 @@ import {
 import { categoriesPropertyByUpdate } from "../../common/consts/categories";
 
 import style from "./UpdateDatabase.module.scss";
+import { EnumCategory } from "../../components/categories";
 
 const UpdateDatabase: React.FC = () => {
   const [selectCategoryProperty, setSelectCategoryProperty] =
@@ -15,10 +16,12 @@ const UpdateDatabase: React.FC = () => {
 
   return (
     <div className={`${style.root} content`}>
-      <Categories
-        categories={categoriesPropertyByUpdate}
-        setSelectCategoryProperty={setSelectCategoryProperty}
-      />
+      <div className={style.priceCategories}>
+        <Categories
+          mode={EnumCategory.anyCategory}
+          categories={categoriesPropertyByUpdate}
+        />
+      </div>
       {selectCategoryProperty === "price" ? (
         <UpDataPrice />
       ) : selectCategoryProperty === "products" ? (

@@ -5,40 +5,21 @@
   top: 0;
   width: 100%;
   max-width: 1600px;
-
+  font-weight: 300;
   height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 18px;
-  border-bottom:solid 1px var(--primary-text);
+  border-bottom:solid 1px var(--white);
   @media (max-width: 1350px) {
+   
     justify-content: center;
   }
   @media (max-width: 600px) {
     justify-content: start;
   }
 
-  .headerIconsList{
-    display: flex;
-    align-items: center;
-    margin-right: 15px;
-    @media (max-width: 1350px) {
-      position: absolute ;
-      right: 0;
-    }
-    :last-child{
-        margin-right: 0;
-      }
-      .headerIconListItem{
-        svg{
-            fill: var(--primary-text);
-        }
-        height: 20px;
-        width: 20px;
-        margin-right: 20px;
-      }
-  }
 
 
   .burgerButton {
@@ -112,6 +93,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    
       .authItems{
         display: flex;
         @media (max-width: 1350px) {
@@ -129,15 +111,6 @@
         }
         :last-child{
           margin: 0;
-        }
-        .itemBg{
-          background-color: var(--burgundy);
-          border: solid 2px var(--burgundy);
-
-        }
-        .itemBor{
-          color: var(--burgundy);
-          border: solid 2px var(--burgundy);
         }
       }
       a{
@@ -164,9 +137,9 @@
         flex-direction: column;
         justify-content: center;
         .navListItem{
+          
           margin-bottom: 35px;
           a{
-          border-bottom: 1px solid var(--white);
             font-size: 38px;
             color: var(--burger-text);
           }
@@ -176,14 +149,14 @@
   .navList.visible{
     left: 0;
   }
- 
   .hederLogo{
     font-size: 34px;
-    font-weight: 500;
+    letter-spacing: 0.6rem;
+    font-weight: 200;
     color:var(--primary-text);
     @media (max-width: 600px) {
       font-size: 30px;
-      margin-left: 50px;
+      margin: 0 auto;
     }
   }
   
@@ -193,28 +166,32 @@
 }
 
 .logged{
+  
   color: var(--primary-text);
   white-space: nowrap;
   display: flex;
   flex-direction: column;
-  margin-left: 30px;
+margin: 0 40px;
   align-items: center;
+  font-size: 15px;
+
   @media (max-width: 1350px) {
-    font-size: 32px;
+    font-size: 26px;
     color: var(--white);
   }
   .helloUser{
     margin-bottom: 5px;
     font-size: 20px;
     span{
+      margin: 0 5px;
       cursor: pointer;
-      border-bottom: solid 2px var(--burgundy);
-      color: var(--burgundy);
-      font-size: 22px;
-      font-weight: 700;
-      @media (max-width: 1350px) {
-        font-size: 30px;
-      }
+      border-bottom: solid 2px var(--primary-text);
+      color: var(--primary-text);
+      font-size: 20px;
+      font-weight: 500;
+      // @media (max-width: 1350px) {
+      //   font-size: 30px;
+      // }
     }
     @media (max-width: 1350px) {
       font-size: 32px;
@@ -222,13 +199,20 @@
     }
   }
   .logoutUser{
-    
     cursor: pointer;
     display: flex;
+
     align-items: center;
     svg{
-      height: 22px;
-      width: 22px;
+      padding: 0;
+      margin: 0;
+  font-size: 15px;
+      text-align: center  ;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 15px;
+      width: 15px;
       fill:var(--primary-text);
       cursor: pointer;
       margin-left: 10px;
@@ -238,3 +222,4 @@
     }
   }
 }
+

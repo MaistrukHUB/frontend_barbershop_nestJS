@@ -18,7 +18,7 @@ export const categoriesProduct: Category[] = [
     categoryProperty: "shave",
   },
   {
-    name: "Pубна паста",
+    name: "Зубна паста",
     categoryProperty: "Toothpaste",
   },
   {

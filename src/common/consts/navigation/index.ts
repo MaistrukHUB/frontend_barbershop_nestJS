@@ -11,12 +11,4 @@ export const headerNav: navigationItem[] = [
     link: "shop",
     name: "Магазин",
   },
-  {
-    link: "about",
-    name: "Про нас",
-  },
-  {
-    link: "academy",
-    name: "Академія",
-  },
 ];

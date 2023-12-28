@@ -7,16 +7,29 @@ import axios from "axios";
 import { RootState } from "../../index";
 import { instance } from "../../../utils/axios";
 import { ProductItem } from "../../../common/@types/product";
+import { Category } from "../../../common/@types/categories";
+
+type FetchProductsParams = {
+  selectedCategory: Category;
+  searchValue: string;
+};
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async () => {
-    const { data } = await instance.get("/products/get-all");
+  async (params: FetchProductsParams) => {
+    const { selectedCategory, searchValue } = params;
+    const paramByFilters = {
+      selectedCategory: selectedCategory.categoryProperty,
+      searchValue,
+    };
+    console.log(selectedCategory);
+    const { data } = await instance.post(
+      `/products/get-all`,
+      paramByFilters
+    );
     return data as ProductItem[];
   }
 );
-
-
 
 enum Status {
   LOADING = "loading",

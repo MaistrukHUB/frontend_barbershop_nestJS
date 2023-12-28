@@ -1,17 +1,21 @@
 export interface IPropsLogin {
-  setPassword: (value: string) => void;
+  serverError: any;
   setEmail: (value: string) => void;
+  setPassword: (value: string) => void;
   navigate: (to: string) => void;
-  handelSubmit: (value: any) => any;
+  handelSubmit: (e: React.FormEvent) => Promise<any>;
+  validationErrors: { [key: string]: string };
 }
 export interface IPropsRegister {
+  serverError: any;
   setEmail: (value: string) => void;
   setName: (value: string) => void;
   setPhone: (value: number) => void;
   setPassword: (value: string) => void;
   setRepeatPassword: (value: string) => void;
   navigate: (to: string) => void;
-  handelSubmit: (value: any) => any;
+  handelSubmit: (e: React.FormEvent) => Promise<any>;
+  validationErrors: { [key: string]: string };
 }
 
 export interface IAuthState {
@@ -41,7 +45,7 @@ interface ICart {
   cartProducts: [ICartProducts];
 }
 
-interface IPublicUser {
+export interface IPublicUser {
   id: number | null;
   name: string;
   phone: number | null;

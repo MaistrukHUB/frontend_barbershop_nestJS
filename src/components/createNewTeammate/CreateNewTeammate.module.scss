@@ -1,0 +1,86 @@
+.circle {
+
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background-color: var(--light-grey);
+  box-shadow: inset   -.1em 0 .7em ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.plus {
+  font-size: 54px;
+  color: var(--white);
+}
+.addTeammate{
+  background: var(--secondary-bg);
+  margin: 0 auto;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 580px;
+  width: 300px;
+  border: solid 2px var(--header-bg);
+  border-radius: 10px;
+  .addTeammateText{
+    margin-top: 15px;
+    font-size: 25px;
+    color: var(--primary-text);
+  }
+ }
+
+ .modal {
+  // margin-top: 200px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--white);
+  padding: 20px;
+background-color: var(--admin-modal-bg);
+
+width: 60%;
+height: 100hv;
+@media (max-width:700px) {
+ top: calc(50% - (-100px));
+}
+
+
+
+}
+.itemBg{
+  background-color: var(--header-bg);
+  border: solid 2px var(--header-bg);
+
+}
+.itemBor{
+  color: var(--header-bg);
+  border: solid 2px var(--header-bg);
+}
+
+.overlay {
+  z-index:1000000;
+  overflow: hidden;
+  overflow-y: auto; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+form {
+  /* Стилі для форми */
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+ 
+}

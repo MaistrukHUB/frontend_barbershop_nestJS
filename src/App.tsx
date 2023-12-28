@@ -14,12 +14,33 @@ import {
 import PrivetRouser from "./utils/router/PrivetRouser";
 import PrivetAdmin from "./utils/router/PrivetAdmin";
 import Layout from "./utils/layout";
-import { useAppSelector } from "./utils/hook";
+import { useAppDispatch, useAppSelector } from "./utils/hook";
 import { visibleValue } from "./redux/slice/overflowHidden";
 import NotFound from "./pages/notFound";
+import { fetchProducts } from "./redux/slice/products";
+import { fetchPrice } from "./redux/slice/price";
+import { fetchTeammates } from "./redux/slice/team";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { selectFilters } from "./redux/slice/filters";
 
 function App() {
   const isVisible: boolean = useAppSelector(visibleValue);
+  const dispatch = useAppDispatch();
+  const { selectedCategory, searchValue } =
+    useAppSelector(selectFilters);
+
+  React.useEffect(() => {
+    dispatch(
+      fetchProducts({
+        selectedCategory,
+        searchValue,
+      })
+    );
+    dispatch(fetchPrice());
+    dispatch(fetchTeammates());
+    console.log();
+  }, []);
 
   return (
     <div className={`App ${isVisible ? "hidden" : ""}`}>
@@ -55,6 +76,7 @@ function App() {
           </Layout>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

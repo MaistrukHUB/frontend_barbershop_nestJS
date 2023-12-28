@@ -1,2 +1,16 @@
 .root{
+  z-index: 100;
+  background: var(--primary-bg);
+  .price{
+    min-height: 400px;
+    min-height: min-content;
+    span ,p{
+      color: var(--white);
+    }
+    width: 100%;
+    height: 100vh;
+    background: no-repeat url('https://i.pinimg.com/736x/2a/ce/4a/2ace4a1606aa5540ed17b08aac9f6470.jpg');
+    background-size: cover  ;
+    background-position: top left;
+  }
 }

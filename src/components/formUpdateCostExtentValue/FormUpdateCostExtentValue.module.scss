@@ -1,0 +1,39 @@
+.root{
+  position: relative;
+  margin:  15px 0;
+  width: 100wh;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--black);
+  border: solid 1px var(--white);
+  border-radius: 12px;
+  padding: 15px 10px;
+   
+}
+.formTitle{
+  word-wrap:break-word;
+  margin-bottom: 15px;
+}
+span{
+  color:var(--white);
+ }
+
+ .iconClose{
+  position: absolute;
+  top: 10px;
+  right:  10px;
+  fill:var(--white);
+ }
+
+ .itemBg{
+margin: 0 auto;
+  background-color: var(--header-bg);
+  border: solid 2px var(--header-bg);
+  max-width: 200px;
+  width: 100%;
+
+  margin-bottom: 20px;
+}

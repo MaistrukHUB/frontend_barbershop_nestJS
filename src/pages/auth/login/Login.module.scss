@@ -26,12 +26,20 @@
 
 .button {
   padding: 10px;
-  background-color: var(--burgundy);
+  background-color: var(--header-bg);
   color: var(--white);
   border: none;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: var(--burgundy-dark);
+  background-color: var(--header-bg-dark);
+}
+
+.error{
+  background: var(--light-grey);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: solid 1px var(--white);
 }
